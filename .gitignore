@@ -1,0 +1,5 @@
+.vscode/
+*.o
+LAST_ALL
+LAST_BONUS
+miniRT

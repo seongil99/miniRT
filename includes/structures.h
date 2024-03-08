@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sihkang <sihkang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:23:57 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/08 14:34:24 by seonyoon         ###   ########.fr       */
+/*   Updated: 2024/03/08 14:48:49 by sihkang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ typedef struct s_ray		t_ray;
 typedef struct s_camera		t_camera;
 typedef struct s_canvas		t_canvas;
 typedef struct s_sphere		t_sphere;
-typedef struct s_hit_record	t_hit_record;;
+typedef struct s_cylinder	t_cylinder;
+typedef struct s_plain		t_plain;
+typedef struct s_hit_record	t_hit_record;
 typedef struct s_object		t_object;
 typedef struct s_light		t_light;
 typedef struct s_hit_record	t_hit_record;
@@ -90,6 +92,22 @@ struct s_canvas
 struct s_sphere
 {
 	t_point3	center;
+	double		radius;
+	double		radius2;
+};
+
+struct s_plain
+{
+	t_point3	point;
+	t_vec3		normal;
+	double		const_term;
+};
+
+struct s_cylinder
+{
+	t_point3	center;
+	t_vec3		axis;
+	double		height;
 	double		radius;
 	double		radius2;
 };

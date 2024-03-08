@@ -5,7 +5,9 @@ LIBFT_FLAGS	= -Llibft -lft
 
 NAME		= miniRT
 
-SRCS		= main.c \
+SRCS		= $(wildcard src/*.c) \
+			$(wildcard src/**/*.c) \
+			$(wildcard src/**/**/*.c) \
 
 OBJS		= $(SRCS:.c=.o)
 
@@ -15,6 +17,8 @@ B_OBJS		= $(B_SRCS:.c=.o)
 
 LIBFT_DIR	= ./libft
 LIBFT_NAME	= libft.a
+
+INCLUDE_DIR	= ./includes
 
 all: $(NAME)
 $(NAME): LAST_ALL
@@ -32,11 +36,10 @@ LAST_BONUS: $(B_OBJS)
 	$(CC) $(B_OBJS) $(MLX_FLAGS) $(LIBFT_FLAGS) -lm -o $(NAME)
 	touch $@
 
-$(OBJS): minirt.h
-$(B_OBJS): minirt_bonus.h
+$(OBJS): $(wildcard includes/*.h)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -Imlx -Ilibft -I. -c $< -o $@
+	$(CC) $(CFLAGS) -Imlx -Ilibft -I$(INCLUDE_DIR) -c $< -o $@
 
 clean:
 	make fclean -sC $(LIBFT_DIR)

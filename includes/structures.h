@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   structures.h                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/08 13:23:57 by seonyoon          #+#    #+#             */
+/*   Updated: 2024/03/08 14:34:24 by seonyoon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef STRUCTURES_H
 # define STRUCTURES_H
 
@@ -21,7 +33,9 @@ typedef int					t_object_type;
 # define FALSE 0
 # define TRUE 1
 # define SP 0
-# define LIGHT_POINT 1
+# define PL 1
+# define CY 2
+# define LIGHT_POINT 3
 # define EPSILON 1e-6 // 0.000001
 # define LUMEN 3  // 이 값을 조절하여 장면의 밝기를 조절할 수 있다.
 

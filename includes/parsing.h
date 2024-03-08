@@ -1,37 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   object_utils.c                                     :+:      :+:    :+:   */
+/*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/08 14:00:23 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/08 14:00:24 by seonyoon         ###   ########.fr       */
+/*   Created: 2024/03/08 13:23:09 by seonyoon          #+#    #+#             */
+/*   Updated: 2024/03/08 14:06:25 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#ifndef PARSING_H
+# define PARSING_H
 
-void	oadd(t_object **list, t_object *new)
-{
-	t_object	*cur;
+# include "structures.h"
 
-	if (*list == NULL)
-	{
-		*list = new;
-		return ;
-	}
-	cur = *list;
-	while (cur->next)
-		cur = cur->next;
-	cur->next = new;
-}
+t_scene	*read_rt_file(char *filename);
 
-t_object	*olast(t_object *list)
-{
-	if (list == NULL)
-		return (NULL);
-	while (list->next)
-		list = list->next;
-	return (list);
-}
+#endif

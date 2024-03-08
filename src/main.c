@@ -6,12 +6,11 @@
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 16:26:10 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/08 12:42:21 by seonyoon         ###   ########.fr       */
+/*   Updated: 2024/03/08 14:46:27 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-#include "structures.h"
 
 int	minirt(t_vars *var);
 
@@ -48,4 +47,5 @@ int	main(int argc, char *argv[])
 	mlx_key_hook(vars.win, key_hook, &vars);
 	mlx_hook(vars.win, 17, 0, exit_hook, 0);
 	mlx_loop(vars.mlx);
+	exit(0);
 }

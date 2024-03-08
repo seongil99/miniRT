@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/08 13:24:17 by seonyoon          #+#    #+#             */
+/*   Updated: 2024/03/08 14:29:45 by seonyoon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef UTILS_H
 # define UTILS_H
 
@@ -25,5 +37,7 @@ t_vec3		vunit(t_vec3 vec);
 t_vec3		vmin(t_vec3 vec1, t_vec3 vec2);
 void		oadd(t_object **list, t_object *new);
 t_object	*olast(t_object *list);
+void		*ft_calloc2(size_t cnt, size_t size);
+char		**ft_split2(char const *s, int (*f)(char c));
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   trace.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sihkang <sihkang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:24:00 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/08 13:24:01 by seonyoon         ###   ########.fr       */
+/*   Updated: 2024/03/08 15:10:45 by sihkang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ t_bool		in_shadow(t_object *objs, t_ray light_ray, double light_len);
 t_bool		hit(t_object *obj, t_ray *ray, t_hit_record *rec);
 t_bool		hit_obj(t_object *obj, t_ray *ray, t_hit_record *rec);
 t_bool		hit_sphere(t_object *world, t_ray *ray, t_hit_record *rec);
+t_bool		hit_plain(t_object *pl_obj, t_ray *ray, t_hit_record *rec);
 void		set_face_normal(t_ray *r, t_hit_record *rec);
 
 #endif

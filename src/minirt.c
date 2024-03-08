@@ -16,10 +16,14 @@ t_scene	*scene_init(void)
 	if(!(scene = (t_scene *)malloc(sizeof(t_scene))))
 		return (NULL);
 	scene->canvas = canvas(1920, 1080);
-	scene->camera = camera(&scene->canvas, point3(0, 0, 0));
-	world = object(SP, sphere(point3(-2, 0, -5), 2), color3(0.5, 0, 0)); // world 에 구1 추가
+	scene->camera = camera(&scene->canvas, point3(1, 0, 0));
+	world = object(PL, plain(point3(0, -2, 0), vunit(vec3(0, 1, 0))), color3(0, 0, 1));
+	oadd(&world, object(PL, plain(point3(-10, 0, 0), vunit(vec3(1, 3, 0))), color3(1, 0, 0)));
+	// oadd(&world, object(PL, plain(point3(0, 0, -20), vunit(vec3(0, 0, 1))), color3(0, 1, 0)));
+	oadd(&world, object(SP, sphere(point3(-2, 0, -5), 2), color3(0.5, 0, 0))); // world 에 구1 추가
 	oadd(&world, object(SP, sphere(point3(2, 0, -5), 2), color3(0, 0.5, 0))); // world 에 구2 추가
-	oadd(&world, object(SP, sphere(point3(0, -1000, 0), 998), color3(0.5, 0.5, 0.9))); // world 에 구3 추가
+	// oadd(&world, object(SP, sphere(point3(0, -1000, 0), 998), color3(0.5, 0.5, 0.9))); // world 에 구3 추가
+	// oadd(&world, object(PL, plain(point3(0, 5, 5), vunit(vec3(0, 1, 0))), color3(0, 0, 1)));
 	scene->world = world;
 	lights = object(LIGHT_POINT, light_point(point3(10, 5, 0), color3(1, 1, 1), 0.5), color3(0, 0, 0)); // 더미 albedo
 	scene->light = lights;

@@ -6,7 +6,7 @@
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 11:38:00 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/09 12:35:49 by seonyoon         ###   ########.fr       */
+/*   Updated: 2024/03/09 19:45:02 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,6 @@
 # include <stdlib.h>
 # include "structures.h"
 # include "parsing.h"
+# include "utils.h"
 
 #endif

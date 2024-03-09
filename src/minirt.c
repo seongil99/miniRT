@@ -34,7 +34,7 @@ t_scene	*scene_init(void)
 	return (scene);
 }
 
-int	minirt(t_vars *var)
+int	minirt(t_vars *var, char *filename)
 {
 	int			i;
 	int			j;
@@ -45,7 +45,7 @@ int	minirt(t_vars *var)
 
 	//Scene setting;
 	// scene = scene_init();
-	scene = read_rt_file("test.rt");
+	scene = read_rt_file(filename);
 	// 랜더링
 	j = 0;
 	while (j <= scene->canvas.height)

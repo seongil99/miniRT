@@ -6,7 +6,7 @@
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:23:53 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/08 13:23:54 by seonyoon         ###   ########.fr       */
+/*   Updated: 2024/03/09 16:27:26 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include "structures.h"
 # include "utils.h"
 
-t_canvas	canvas(int  width, int height);
-t_camera	camera(t_canvas *canvas, t_point3 origin);
+t_canvas	canvas(int width, int height);
+t_camera	camera(t_canvas *canvas, t_point3 orig, t_vec3 dir, double fov);
 t_sphere	*sphere(t_point3 center, double radius);
 t_plain		*plain(t_point3 point, t_vec3 normal);
 t_cylinder	*cylinder(t_point3 center, t_vec3 axis, double height, double radius);

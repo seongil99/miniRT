@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc2.c                                       :+:      :+:    :+:   */
+/*   parse_nvec.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/02 14:06:37 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/08 16:03:12 by seonyoon         ###   ########.fr       */
+/*   Created: 2024/03/08 18:47:26 by seonyoon          #+#    #+#             */
+/*   Updated: 2024/03/09 11:38:41 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "libft.h"
+#include "parsing.h"
 #include "utils.h"
 
-void	*ft_calloc2(size_t cnt, size_t size)
+t_vec3	parse_nvec(char *str)
 {
-	void	*ret;
+	char	**split;
+	t_vec3	ret;
 
-	ret = ft_calloc(cnt, size);
-	if (!ret)
-	{
-		exit_err("Memory Error\n");
-	}
-	return (ret);
+	split = ft_split2(str, is_comma);
+	if (split_size(split) != 3)
+		exit_err(ERR_WRONG_VALUE);
+	ret.x = ft_atof(split[0]);
+	ret.y = ft_atof(split[1]);
+	ret.z = ft_atof(split[2]);
+	split_clear(split);
+	if (ret.x < -1.0 || ret.x > 1.0
+		|| ret.y < -1.0 || ret.y > 1.0
+		|| ret.y < -1.0 || ret.y > 1.0)
+		exit_err(ERR_OUT_OF_RANGE);
+	return (vunit(ret));
 }

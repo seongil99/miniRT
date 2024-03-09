@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc2.c                                       :+:      :+:    :+:   */
+/*   ft_atoi2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/02 14:06:37 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/08 16:03:12 by seonyoon         ###   ########.fr       */
+/*   Created: 2024/03/08 15:54:22 by seonyoon          #+#    #+#             */
+/*   Updated: 2024/03/09 11:23:44 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "libft.h"
+#include "parsing.h"
 #include "utils.h"
 
-void	*ft_calloc2(size_t cnt, size_t size)
+int	ft_atoi2(const char *str)
 {
-	void	*ret;
+	long long	ret;
+	long long	sign;
 
-	ret = ft_calloc(cnt, size);
-	if (!ret)
+	ret = 0;
+	sign = 1;
+	if (!str || !*str)
+		return (0);
+	if (*str == '-')
 	{
-		exit_err("Memory Error\n");
+		sign = -1;
+		str++;
 	}
-	return (ret);
+	while (*str)
+	{
+		ret = ret * 10 + (*str - '0');
+		if (ret > 1000000LL)
+			exit_err(ERR_NUM_TOO_LONG);
+		str++;
+	}
+	return ((int)(sign * ret));
 }

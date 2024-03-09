@@ -6,12 +6,12 @@
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 14:51:47 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/08 14:36:01 by seonyoon         ###   ########.fr       */
+/*   Updated: 2024/03/08 19:10:54 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "structures.h"
+#include "utils.h"
 
 static void	split_clear(char **l, size_t size)
 {
@@ -73,7 +73,7 @@ static int	append_split(char **ret, char const *s, int (*f)(char c))
 	char	*temp;
 
 	len = word_len(s, f);
-	temp = (char *)malloc(sizeof(char) * (len + 1));
+	temp = ft_calloc2(len + 1, sizeof(char));
 	if (!temp)
 		return (0);
 	ft_strlcpy(temp, s, len + 1);
@@ -89,7 +89,7 @@ char	**ft_split2(char const *s, int (*f)(char c))
 	size_t	i;
 
 	cnt = worlds_cnt(s, f);
-	ret = (char **)ft_calloc((cnt + 1), sizeof(char *));
+	ret = ft_calloc2((cnt + 1), sizeof(char *));
 	if (!ret)
 		return (0);
 	i = 0;

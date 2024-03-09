@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc2.c                                       :+:      :+:    :+:   */
+/*   is_double.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/02 14:06:37 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/08 16:03:12 by seonyoon         ###   ########.fr       */
+/*   Created: 2024/03/08 15:16:38 by seonyoon          #+#    #+#             */
+/*   Updated: 2024/03/08 15:48:47 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "parsing.h"
 #include "libft.h"
-#include "utils.h"
 
-void	*ft_calloc2(size_t cnt, size_t size)
+int	is_double(const char *s)
 {
-	void	*ret;
+	int	flag;
 
-	ret = ft_calloc(cnt, size);
-	if (!ret)
+	flag = 0;
+	if (!s || !*s)
+		return (0);
+	if (!(ft_isdigit(*s) || *s == '-' || *s == '+'))
+		return (0);
+	++s;
+	while (*s)
 	{
-		exit_err("Memory Error\n");
+		if (!(ft_isdigit(*s) || *s == '.'))
+			return (0);
+		if (!flag && *s == '.')
+			flag = 1;
+		else if (flag && *s == '.')
+			return (0);
+		++s;
 	}
-	return (ret);
+	if (!ft_isdigit(*--s))
+		return (0);
+	return (1);
 }

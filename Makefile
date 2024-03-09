@@ -1,5 +1,5 @@
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -g
 MLX_FLAGS	= -Lmlx -lmlx -framework OpenGL -framework Appkit
 LIBFT_FLAGS	= -Llibft -lft
 

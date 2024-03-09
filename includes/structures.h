@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sihkang <sihkang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:23:57 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/08 19:33:24 by sihkang          ###   ########seoul.kr  */
+/*   Updated: 2024/03/09 16:32:48 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,14 @@ struct s_ray
 struct s_camera
 {
 	t_point3	orig;  // 카메라 원점(위치)
+	t_vec3		dir; // 카메라 방향
+	t_point3	left_bottom; // 왼쪽 아래 코너점
+	double		fov; //화각
+	double		focal_len; // focal length
 	double		viewport_h; // 뷰포트 세로길이
 	double		viewport_w; // 뷰포트 가로길이
 	t_vec3		horizontal; // 수평길이 벡터
 	t_vec3		vertical; // 수직길이 벡터
-	double		focal_len; // focal length
-	t_point3	left_bottom; // 왼쪽 아래 코너점
 };
 
 struct s_canvas

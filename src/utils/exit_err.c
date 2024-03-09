@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc2.c                                       :+:      :+:    :+:   */
+/*   exit_err.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/02 14:06:37 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/08 16:03:12 by seonyoon         ###   ########.fr       */
+/*   Created: 2024/03/08 16:01:19 by seonyoon          #+#    #+#             */
+/*   Updated: 2024/03/09 12:37:45 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "libft.h"
-#include "utils.h"
 
-void	*ft_calloc2(size_t cnt, size_t size)
+void	exit_err(char *msg)
 {
-	void	*ret;
-
-	ret = ft_calloc(cnt, size);
-	if (!ret)
-	{
-		exit_err("Memory Error\n");
-	}
-	return (ret);
+	ft_putstr_fd("Error\n", STDERR_FILENO);
+	ft_putstr_fd(msg, STDERR_FILENO);
+	exit(1);
 }

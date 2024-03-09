@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc2.c                                       :+:      :+:    :+:   */
+/*   parse_camera.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/02 14:06:37 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/08 16:03:12 by seonyoon         ###   ########.fr       */
+/*   Created: 2024/03/09 12:43:16 by seonyoon          #+#    #+#             */
+/*   Updated: 2024/03/09 16:28:25 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "libft.h"
+#include "parsing.h"
 #include "utils.h"
+#include "scene.h"
 
-void	*ft_calloc2(size_t cnt, size_t size)
+void	parse_camera(t_scene *scene, char **split)
 {
-	void	*ret;
+	t_point3	org;
+	t_vec3		dir;
+	int			fov;
 
-	ret = ft_calloc(cnt, size);
-	if (!ret)
-	{
-		exit_err("Memory Error\n");
-	}
-	return (ret);
+	if (split_size(split) != 4)
+		exit_err(ERR_WRONG_ARGS);
+	org = parse_crd(split[1]);
+	dir = parse_nvec(split[2]);
+	fov = ft_atof(split[3]);
+	if (fov < 0.0 || fov > 180.0)
+		exit_err(ERR_OUT_OF_RANGE);
+	scene->camera = camera(&scene->canvas, org, dir, fov);
 }

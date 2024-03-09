@@ -1,27 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc2.c                                       :+:      :+:    :+:   */
+/*   split_size.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/02 14:06:37 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/08 16:03:12 by seonyoon         ###   ########.fr       */
+/*   Created: 2024/03/08 15:11:32 by seonyoon          #+#    #+#             */
+/*   Updated: 2024/03/09 12:37:18 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "libft.h"
-#include "utils.h"
+#include "parsing.h"
+#include <stdlib.h>
 
-void	*ft_calloc2(size_t cnt, size_t size)
+void	split_clear(char **sp)
 {
-	void	*ret;
+	char	**l;
 
-	ret = ft_calloc(cnt, size);
-	if (!ret)
+	l = sp;
+	if (!l)
+		return ;
+	while (*l)
 	{
-		exit_err("Memory Error\n");
+		free(*l);
+		++l;
+	}
+	free(sp);
+}
+
+int	split_size(char **split)
+{
+	int	ret;
+
+	if (!split)
+		return (0);
+	ret = 0;
+	while (*split)
+	{
+		++ret;
+		++split;
 	}
 	return (ret);
 }

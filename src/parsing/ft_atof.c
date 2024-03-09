@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc2.c                                       :+:      :+:    :+:   */
+/*   ft_atof.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/02 14:06:37 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/08 16:03:12 by seonyoon         ###   ########.fr       */
+/*   Created: 2024/03/08 15:51:08 by seonyoon          #+#    #+#             */
+/*   Updated: 2024/03/09 11:23:59 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "libft.h"
+#include "parsing.h"
 #include "utils.h"
 
-void	*ft_calloc2(size_t cnt, size_t size)
+double	ft_atof(const char *s)
 {
-	void	*ret;
+	double	ret;
+	double	t;
+	char	**split;
 
-	ret = ft_calloc(cnt, size);
-	if (!ret)
+	if (!s || !*s)
+		return (0);
+	if (!is_double(s))
+		exit_err(ERR_WRONG_VALUE);
+	split = ft_split2(s, is_dot);
+	ret = ft_atoi2(split[0]);
+	t = ft_atoi2(split[1]);
+	while (t >= 1.0)
 	{
-		exit_err("Memory Error\n");
+		t /= 10.0;
 	}
-	return (ret);
+	split_clear(split);
+	return (ret + t);
 }

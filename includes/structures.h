@@ -6,7 +6,7 @@
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:23:57 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/09 16:32:48 by seonyoon         ###   ########.fr       */
+/*   Updated: 2024/03/11 16:01:27 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,24 +71,36 @@ struct s_ray
 	t_vec3		dir;
 };
 
+/**
+ * 카메라 구조체
+ * org - 카메라 원점
+ * dir - 카메라 방향벡터
+ * left_bottom - 왼쪽 아래 점
+ * fov - 화각
+ * focal_len - focal length
+ * viewport_h - 뷰포트 세로길이
+ * viewport_w - 뷰포트 가로길이
+ * horizontal - 수평길이 벡터
+ * vertical - 가로길이 벡터
+*/
 struct s_camera
 {
-	t_point3	orig;  // 카메라 원점(위치)
-	t_vec3		dir; // 카메라 방향
-	t_point3	left_bottom; // 왼쪽 아래 코너점
-	double		fov; //화각
-	double		focal_len; // focal length
-	double		viewport_h; // 뷰포트 세로길이
-	double		viewport_w; // 뷰포트 가로길이
-	t_vec3		horizontal; // 수평길이 벡터
-	t_vec3		vertical; // 수직길이 벡터
+	t_point3	orig;
+	t_vec3		dir;
+	t_point3	left_bottom;
+	double		fov;
+	double		focal_len;
+	double		viewport_h;
+	double		viewport_w;
+	t_vec3		horizontal;
+	t_vec3		vertical;
 };
 
 struct s_canvas
 {
-	int		width; //canvas width
-	int		height; //canvas height;
-	double	aspect_ratio; //종횡비
+	int		width;
+	int		height;
+	double	aspect_ratio;
 };
 
 struct s_sphere
@@ -146,7 +158,7 @@ struct s_scene
 	t_camera		camera;
 	t_object		*world;
 	t_object		*light;
-	t_color3		ambient; // 8.4에서 설명할 요소
+	t_color3		ambient;
 	t_ray			ray;
 	t_hit_record	rec;
 };

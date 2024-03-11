@@ -6,7 +6,7 @@
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 12:49:21 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/09 20:10:54 by seonyoon         ###   ########.fr       */
+/*   Updated: 2024/03/11 16:04:36 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,13 @@ t_plain	*plain(t_point3 point, t_vec3 normal)
 	pl = (t_plain *)ft_calloc2(1, sizeof(t_plain));
 	pl->point = point;
 	pl->normal = normal;
-	pl->const_term = -(point.x * normal.x + point.y * normal.y + point.z * normal.z);
+	pl->const_term = -(point.x * normal.x
+			+ point.y * normal.y + point.z * normal.z);
 	return (pl);
 }
 
-t_cylinder	*cylinder(t_point3 center, t_vec3 axis, double height, double radius)
+t_cylinder	*cylinder(t_point3 center, t_vec3 axis,
+		double height, double radius)
 {
 	t_cylinder	*cy;
 
@@ -60,7 +62,8 @@ t_cylinder	*cylinder(t_point3 center, t_vec3 axis, double height, double radius)
 	return (cy);
 }
 
-t_light	*light_point(t_point3 light_origin, t_color3 light_color, double bright_ratio)
+t_light	*light_point(t_point3 light_origin,
+		t_color3 light_color, double bright_ratio)
 {
 	t_light	*light;
 

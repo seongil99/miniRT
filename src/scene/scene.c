@@ -6,7 +6,7 @@
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 12:50:00 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/09 18:30:11 by seonyoon         ###   ########.fr       */
+/*   Updated: 2024/03/11 14:40:25 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,16 @@ t_camera	camera(t_canvas *canvas, t_point3 orig, t_vec3 dir, double fov)
 	cam.viewport_w = viewport_height * canvas->aspect_ratio;
 	focal_len = get_diagnal(cam.viewport_h, cam.viewport_w) / 2 / get_tan(fov / 2);
 	cam.focal_len = focal_len;
-	cam.horizontal = vec3(cam.viewport_w, 0, 0);
-	cam.vertical = vec3(0, cam.viewport_h, 0);
+	if (vlength(vcross(vec3(0, 1, 0), cam.dir)))
+		cam.horizontal = vmult(vunit(vcross(cam.dir, vec3(0, 1, 0))), cam.viewport_w);
+	else
+		cam.horizontal = vmult(vunit(vcross(cam.dir, vec3(0, 0, -1))), cam.viewport_w);
+	cam.vertical = vmult(vunit(vcross(cam.horizontal, cam.dir)), cam.viewport_h);
+	// cam.horizontal = vec3(cam.viewport_w, 0, 0);
+	// cam.vertical = vec3(0, cam.viewport_h, 0);
 	// 왼쪽 아래 코너점 좌표, origin - horizontal / 2 - vertical / 2 - vec3(0,0,focal_length)
 	cam.left_bottom = vminus(
-			vminus(vminus(cam.orig, vdivide(cam.horizontal, 2)),
-				vdivide(cam.vertical, 2)), vec3(0, 0, focal_len));
+			vminus(vplus(cam.orig, vmult(cam.dir, cam.focal_len)),
+				vdivide(cam.horizontal, 2)), vdivide(cam.vertical, 2));
 	return (cam);
 }

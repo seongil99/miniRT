@@ -56,7 +56,10 @@ UTILS_SRC	= exit_err.c \
 			ft_calloc2.c \
 			ft_split2.c \
 			object_utils.c \
-			vec3_utils.c
+			vec3_utils.c \
+			vec3_utils2.c \
+			vec3_utils3.c \
+			vec3_utils4.c
 
 SRCS		= $(addprefix $(SRCS_DIR)/,$(MAIN_SRC)) \
 			$(addprefix $(PARSING_DIR)/,$(PARSING_SRC)) \

@@ -6,7 +6,7 @@
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 16:42:21 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/09 17:16:43 by seonyoon         ###   ########.fr       */
+/*   Updated: 2024/03/11 11:37:28 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 #include "utils.h"
 #include "scene.h"
 
-void	parse_light(t_scene *scene, char **split)
+void	parse_light(t_scene *scene, char **split, t_parse_data *data)
 {
 	t_point3	crd;
 	t_color3	color;
 	double		brightness;
 
+	++data->num_light;
 	if (split_size(split) != 4)
 		exit_err(ERR_WRONG_ARGS);
 	crd = parse_crd(split[1]);
@@ -27,7 +28,7 @@ void	parse_light(t_scene *scene, char **split)
 	if (brightness < 0.0 || brightness > 1.0)
 		exit_err(ERR_OUT_OF_RANGE);
 	color = parse_color(split[3]);
-	scene->light = object(LIGHT_POINT,
+	oadd(&scene->light, object(LIGHT_POINT,
 			light_point(crd, color, brightness),
-			color3(0, 0, 0));
+			color3(0, 0, 0)));
 }

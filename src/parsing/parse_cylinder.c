@@ -6,7 +6,7 @@
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 17:18:01 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/09 17:40:13 by seonyoon         ###   ########.fr       */
+/*   Updated: 2024/03/11 11:37:17 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "utils.h"
 #include "scene.h"
 
-void	parse_cylinder(t_scene *scene, char **split)
+void	parse_cylinder(t_scene *scene, char **split, t_parse_data *data)
 {
 	t_point3	crd;
 	double		diameter;
@@ -22,6 +22,7 @@ void	parse_cylinder(t_scene *scene, char **split)
 	t_color3	color;
 	t_vec3		nvec;
 
+	++data->num_cylinder;
 	if (split_size(split) != 6)
 		exit_err(ERR_WRONG_ARGS);
 	crd = parse_crd(split[1]);

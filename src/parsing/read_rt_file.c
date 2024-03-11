@@ -6,7 +6,7 @@
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:14:29 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/09 17:39:45 by seonyoon         ###   ########.fr       */
+/*   Updated: 2024/03/11 13:25:34 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,33 +17,33 @@
 #include <fcntl.h>
 #include "scene.h"
 
-static void	parse_line(t_scene *scene, char *line)
+static void	parse_line(t_scene *scene, char *line, t_parse_data *data)
 {
 	char	**split;
 
 	if (!scene || !line)
 		return ;
 	split = ft_split2(line, ft_isspace);
-	if (!split || !*split)
+	if (!split)
 		return ;
 	if (ft_strncmp(*split, AMBIENT_STR, 3) == 0)
-		parse_ambient(scene, split);
+		parse_ambient(scene, split, data);
 	else if (ft_strncmp(*split, CAM_STR, 3) == 0)
-		parse_camera(scene, split);
+		parse_camera(scene, split, data);
 	else if (ft_strncmp(*split, LIGHT_STR, 3) == 0)
-		parse_light(scene, split);
+		parse_light(scene, split, data);
 	else if (ft_strncmp(*split, SPHERE_STR, 3) == 0)
-		parse_sphere(scene, split);
+		parse_sphere(scene, split, data);
 	else if (ft_strncmp(*split, PLAIN_STR, 3) == 0)
-		parse_plain(scene, split);
+		parse_plain(scene, split, data);
 	else if (ft_strncmp(*split, CYLINDER_STR, 3) == 0)
-		parse_cylinder(scene, split);
+		parse_cylinder(scene, split, data);
 	else
 		exit_err(ERR_IDENTIFIER);
 	split_clear(split);
 }
 
-static void	parse_objects(t_scene *scene, int fd)
+static void	parse_objects(t_scene *scene, int fd, t_parse_data *data)
 {
 	char	*line;
 
@@ -53,21 +53,24 @@ static void	parse_objects(t_scene *scene, int fd)
 		if (!line)
 			return ;
 		if (*line == '\n')
+		{
+			free(line);
 			continue ;
-		parse_line(scene, line);
+		}
+		parse_line(scene, line, data);
 		free(line);
 	}
 }
 
-t_scene	*read_rt_file(char *filename)
+void	read_rt_file(t_scene *scene, char *filename)
 {
-	int		fd;
-	t_scene	*ret;
+	int				fd;
+	t_parse_data	data;
 
-	ret = ft_calloc2(1, sizeof(t_scene));
-	ret->canvas = canvas(WIN_WIDTH, WIN_HEIGHT);
+	ft_bzero(&data, sizeof(t_parse_data));
+	ft_bzero(scene, sizeof(t_scene));
+	scene->canvas = canvas(WIN_WIDTH, WIN_HEIGHT);
 	fd = open(filename, O_RDONLY);
-	parse_objects(ret, fd);
+	parse_objects(scene, fd, &data);
 	close(fd);
-	return (ret);
 }

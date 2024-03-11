@@ -6,7 +6,7 @@
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:23:09 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/09 17:39:01 by seonyoon         ###   ########.fr       */
+/*   Updated: 2024/03/11 13:25:48 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,26 @@
 # define ERR_WRONG_VALUE "Wrong value\n"
 # define ERR_WRONG_ARGS "Wrong arguments\n"
 # define ERR_IDENTIFIER "Identifier error\n"
+# define ERR_TOO_MANY_AMBIENT "Too many A\n"
+# define ERR_TOO_MANY_CAMERA "Too many C\n"
 
+typedef struct s_parse_data
+{
+	int	num_ambient;
+	int	num_camera;
+	int	num_light;
+	int	num_sphere;
+	int	num_plain;
+	int	num_cylinder;
+}	t_parse_data;
 
-t_scene		*read_rt_file(char *filename);
-void		parse_ambient(t_scene *scene, char **split);
-void		parse_camera(t_scene *scene, char **split);
-void		parse_light(t_scene *scene, char **split);
-void		parse_sphere(t_scene *scene, char **split);
-void		parse_plain(t_scene *scene, char **split);
-void		parse_cylinder(t_scene *scene, char **split);
+void		read_rt_file(t_scene *scene, char *filename);
+void		parse_ambient(t_scene *scene, char **split, t_parse_data *data);
+void		parse_camera(t_scene *scene, char **split, t_parse_data *data);
+void		parse_light(t_scene *scene, char **split, t_parse_data *data);
+void		parse_sphere(t_scene *scene, char **split, t_parse_data *data);
+void		parse_plain(t_scene *scene, char **split, t_parse_data *data);
+void		parse_cylinder(t_scene *scene, char **split, t_parse_data *data);
 t_color3	parse_color(char *str);
 t_point3	parse_crd(char *str);
 t_vec3		parse_nvec(char *str);

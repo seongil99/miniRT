@@ -6,7 +6,7 @@
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 14:00:26 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/08 14:00:27 by seonyoon         ###   ########.fr       */
+/*   Updated: 2024/03/11 11:42:11 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,8 +151,7 @@ t_vec3	vunit(t_vec3 vec)
 	double len = vlength(vec);
 	if (len == 0)
 	{
-		printf("Error\n:Devider is 0");
-		exit(0);
+		exit_err("Divider is 0\n");
 	}
 	vec.x /= len;
 	vec.y /= len;

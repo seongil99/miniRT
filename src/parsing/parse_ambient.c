@@ -6,18 +6,21 @@
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 15:13:21 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/09 12:45:18 by seonyoon         ###   ########.fr       */
+/*   Updated: 2024/03/11 12:59:21 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 #include "utils.h"
 
-void	parse_ambient(t_scene *scene, char **split)
+void	parse_ambient(t_scene *scene, char **split, t_parse_data *data)
 {
 	double		ka;
 	t_color3	color;
 
+	++data->num_ambient;
+	if (data->num_ambient > 1)
+		exit_err(ERR_TOO_MANY_AMBIENT);
 	if (split_size(split) != 3)
 		exit_err(ERR_WRONG_ARGS);
 	ka = ft_atof(split[1]);

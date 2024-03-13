@@ -6,7 +6,7 @@
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:23:09 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/11 13:25:48 by seonyoon         ###   ########.fr       */
+/*   Updated: 2024/03/13 15:18:56 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define PARSING_H
 
 # include "structures.h"
+
+# define FILE_EXTENSION ".rt"
 
 # define AMBIENT_STR "A"
 # define CAM_STR "C"
@@ -29,6 +31,7 @@
 # define ERR_IDENTIFIER "Identifier error\n"
 # define ERR_TOO_MANY_AMBIENT "Too many A\n"
 # define ERR_TOO_MANY_CAMERA "Too many C\n"
+# define ERR_WRONG_FILENANME "Wrong file name\n"
 
 typedef struct s_parse_data
 {

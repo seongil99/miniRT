@@ -6,7 +6,7 @@
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:14:29 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/11 13:25:34 by seonyoon         ###   ########.fr       */
+/*   Updated: 2024/03/13 15:20:09 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,17 @@
 #include "libft.h"
 #include <fcntl.h>
 #include "scene.h"
+
+static void	check_filename(char *filename)
+{
+	char	*dot;
+
+	dot = ft_strchr(filename, '.');
+	if (!dot)
+		exit_err(ERR_WRONG_FILENANME);
+	if (ft_strncmp(dot, FILE_EXTENSION, 4) != 0)
+		exit_err(ERR_WRONG_FILENANME);
+}
 
 static void	parse_line(t_scene *scene, char *line, t_parse_data *data)
 {
@@ -67,6 +78,7 @@ void	read_rt_file(t_scene *scene, char *filename)
 	int				fd;
 	t_parse_data	data;
 
+	check_filename(filename);
 	ft_bzero(&data, sizeof(t_parse_data));
 	ft_bzero(scene, sizeof(t_scene));
 	scene->canvas = canvas(WIN_WIDTH, WIN_HEIGHT);

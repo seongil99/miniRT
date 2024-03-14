@@ -30,7 +30,7 @@ t_bool	hit_obj(t_object *world, t_ray *ray, t_hit_record *rec)
 		hit_result = hit_sphere(world, ray, rec); //hit_sphere의 첫번째 인자도 t_sphere *에서 t_object *로 수정해주자
 	else if (world->type == PL)
 		hit_result = hit_plain(world, ray, rec);
-	// else if (world->type = CY)
-	// 	hit_result = hit_cylinder(world, ray, rec);
+	else if (world->type == CY)
+		hit_result = hit_cylinder(world, ray, rec);
 	return (hit_result);
 }

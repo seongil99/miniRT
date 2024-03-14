@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sihkang <sihkang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:23:57 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/11 16:01:27 by seonyoon         ###   ########.fr       */
+/*   Updated: 2024/03/13 15:28:06 by sihkang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,7 @@ struct s_hit_record
 	double		tmax;
 	double		t;
 	t_bool		front_face;
+	int			type;
 	t_color3	albedo;
 };
 

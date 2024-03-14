@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_rt_file.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sihkang <sihkang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:14:29 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/13 15:20:09 by seonyoon         ###   ########.fr       */
+/*   Updated: 2024/03/14 12:19:26 by sihkang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	check_filename(char *filename)
 {
 	char	*dot;
 
-	dot = ft_strchr(filename, '.');
+	dot = ft_strrchr(filename, '.');
 	if (!dot)
 		exit_err(ERR_WRONG_FILENANME);
 	if (ft_strncmp(dot, FILE_EXTENSION, 4) != 0)
@@ -83,6 +83,8 @@ void	read_rt_file(t_scene *scene, char *filename)
 	ft_bzero(scene, sizeof(t_scene));
 	scene->canvas = canvas(WIN_WIDTH, WIN_HEIGHT);
 	fd = open(filename, O_RDONLY);
+	if (fd <= 0)
+		exit_err(ERR_WRONG_FILENANME);
 	parse_objects(scene, fd, &data);
 	close(fd);
 }

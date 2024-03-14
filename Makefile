@@ -44,6 +44,7 @@ TRACE_DIR	= $(addprefix $(SRCS_DIR)/,trace)
 HIT_DIR		= $(addprefix $(TRACE_DIR)/,hit)
 HIT_SRC		= hit_plain.c \
 			hit_sphere.c \
+			hit_cylinder.c \
 			hit.c \
 			normal.c
 

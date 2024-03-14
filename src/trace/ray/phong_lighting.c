@@ -60,8 +60,7 @@ t_color3	phong_lighting(t_scene *scene)
 	lights = scene->light;
 	while (lights) //여러 광원에서 나오는 모든 빛에 대해 각각 diffuse, specular 값을 모두 구해줘야 한다
 	{
-		if(lights->type == LIGHT_POINT)
-			light_color = vplus(light_color, point_light_get(scene, lights->element));
+		light_color = vplus(light_color, point_light_get(scene, lights->element));
 		lights = lights->next;
 	}
 	light_color = vplus(light_color, scene->ambient);

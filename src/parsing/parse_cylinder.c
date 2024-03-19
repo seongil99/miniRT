@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_cylinder.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sihkang <sihkang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 17:18:01 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/17 13:41:43 by sihkang          ###   ########seoul.kr  */
+/*   Updated: 2024/03/19 18:25:05 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	parse_cylinder(t_scene *scene, char **split, t_parse_data *data)
 	diameter = ft_atof(split[3]);
 	height = ft_atof(split[4]);
 	color = parse_color(split[5]);
-	if (diameter < 0.0 || height < 0.0)
+	if (diameter <= 0.0 || height <= 0.0)
 		exit_err(ERR_WRONG_VALUE);
 	oadd(&scene->world,
 		object(CY, cylinder(crd, nvec, height, diameter), color));

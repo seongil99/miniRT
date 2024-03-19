@@ -6,7 +6,7 @@
 /*   By: sihkang <sihkang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:23:57 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/13 15:28:06 by sihkang          ###   ########seoul.kr  */
+/*   Updated: 2024/03/19 18:10:04 by sihkang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,8 +119,10 @@ struct s_plain
 
 struct s_cylinder
 {
-	t_point3	center;
-	t_vec3		axis;
+	t_point3	center_top;
+	t_point3	center_down;
+	t_vec3		axis_top;
+	t_vec3		axis_down;
 	double		height;
 	double		radius;
 	double		radius2;

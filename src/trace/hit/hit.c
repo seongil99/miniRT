@@ -1,36 +1,47 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hit.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sihkang <sihkang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/19 19:55:54 by sihkang           #+#    #+#             */
+/*   Updated: 2024/03/19 19:57:57 by sihkang          ###   ########seoul.kr  */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "trace.h"
 
 t_bool	hit(t_object *world, t_ray *ray, t_hit_record *rec)
 {
-	t_bool			hit_anything;
-	t_hit_record	temp_rec;
+	t_bool			is_hit;
+	t_hit_record	tmp;
 
-	temp_rec = *rec; // temp_rec의 tmin, tmax 값 초기화를 위해.
-	hit_anything = FALSE;
+	tmp = *rec;
+	is_hit = FALSE;
 	while (world)
 	{
-		if (hit_obj(world, ray, &temp_rec))
+		if (hit_obj(world, ray, &tmp))
 		{
-			hit_anything = TRUE;
-			temp_rec.tmax = temp_rec.t;
-			*rec = temp_rec;
+			is_hit = TRUE;
+			tmp.tmax = tmp.t;
+			*rec = tmp;
 		}
 		world = world->next;
 	}
-	return (hit_anything);
+	return (is_hit);
 }
 
-// hit_obj는 오브젝트 타입에 맞는 hit함수로 연결해주는 관문
 t_bool	hit_obj(t_object *world, t_ray *ray, t_hit_record *rec)
 {
-	t_bool	hit_result;
+	t_bool	res;
 
-	hit_result = FALSE;
+	res = FALSE;
 	if (world->type == SP)
-		hit_result = hit_sphere(world, ray, rec);
+		res = hit_sphere(world, ray, rec);
 	else if (world->type == PL)
-		hit_result = hit_plain(world, ray, rec);
+		res = hit_plain(world, ray, rec);
 	else if (world->type == CY)
-		hit_result = hit_cylinder(world, ray, rec);
-	return (hit_result);
+		res = hit_cylinder(world, ray, rec);
+	return (res);
 }

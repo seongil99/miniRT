@@ -6,7 +6,7 @@
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 17:18:01 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/19 18:25:05 by seonyoon         ###   ########.fr       */
+/*   Updated: 2024/03/21 12:35:52 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	parse_cylinder(t_scene *scene, char **split, t_parse_data *data)
 
 	++data->num_cylinder;
 	if (split_size(split) != 6)
-		exit_err(ERR_WRONG_ARGS);
+		exit_err(ERR_WRONG_VALUE);
 	crd = parse_crd(split[1]);
 	nvec = parse_nvec(split[2]);
 	diameter = ft_atof(split[3]);

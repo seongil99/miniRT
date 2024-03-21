@@ -6,7 +6,7 @@
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 18:29:51 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/09 12:31:14 by seonyoon         ###   ########.fr       */
+/*   Updated: 2024/03/21 12:35:44 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ t_color3	parse_color(char *str)
 	char		**split;
 	t_color3	ret;
 
+	if (count_commma(str) != 2)
+		exit_err(ERR_WRONG_VALUE);
 	split = ft_split2(str, is_comma);
 	if (split_size(split) != 3)
 		exit_err(ERR_WRONG_VALUE);

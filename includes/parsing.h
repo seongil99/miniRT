@@ -6,7 +6,7 @@
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:23:09 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/13 15:18:56 by seonyoon         ###   ########.fr       */
+/*   Updated: 2024/03/21 12:49:21 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 # define ERR_OUT_OF_RANGE "Out of range\n"
 # define ERR_NUM_TOO_LONG "Number too long\n"
 # define ERR_WRONG_VALUE "Wrong value\n"
-# define ERR_WRONG_ARGS "Wrong arguments\n"
 # define ERR_IDENTIFIER "Identifier error\n"
 # define ERR_TOO_MANY_AMBIENT "Too many A\n"
 # define ERR_TOO_MANY_CAMERA "Too many C\n"
@@ -60,5 +59,6 @@ int			is_comma(char c);
 int			is_dot(char c);
 double		ft_atof(const char *s);
 int			ft_atoi2(const char *str);
+int			count_commma(char *str);
 
 #endif

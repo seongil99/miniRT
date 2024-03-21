@@ -6,7 +6,7 @@
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 16:42:21 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/11 11:37:28 by seonyoon         ###   ########.fr       */
+/*   Updated: 2024/03/21 12:35:56 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	parse_light(t_scene *scene, char **split, t_parse_data *data)
 
 	++data->num_light;
 	if (split_size(split) != 4)
-		exit_err(ERR_WRONG_ARGS);
+		exit_err(ERR_WRONG_VALUE);
 	crd = parse_crd(split[1]);
 	brightness = ft_atof(split[2]);
 	if (brightness < 0.0 || brightness > 1.0)

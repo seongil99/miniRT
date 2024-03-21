@@ -6,7 +6,7 @@
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 15:54:22 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/09 11:23:44 by seonyoon         ###   ########.fr       */
+/*   Updated: 2024/03/21 12:42:47 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ int	ft_atoi2(const char *str)
 	if (*str == '-')
 	{
 		sign = -1;
+		str++;
+	}
+	else if (*str == '+')
+	{
 		str++;
 	}
 	while (*str)

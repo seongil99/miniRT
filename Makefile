@@ -1,5 +1,5 @@
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -g
+CFLAGS		= -Wall -Wextra -Werror
 MLX_FLAGS	= -Lmlx -lmlx -framework OpenGL -framework Appkit
 
 LIBFT_FLAGS	= -Llibft -lft
@@ -14,7 +14,8 @@ MAIN_SRC	= main.c \
 			minirt.c
 
 PARSING_DIR	= $(addprefix $(SRCS_DIR)/,parsing)
-PARSING_SRC = ft_atof.c \
+PARSING_SRC = count_comma.c \
+			ft_atof.c \
 			ft_atoi2.c \
 			is_comma.c \
 			is_dot.c \
@@ -82,20 +83,11 @@ INCLUDE_SRC	= minirt.h \
 INCLUDES = $(addprefix $(INCLUDE_DIR)/,$(INCLUDE_SRC))
 
 all: $(NAME)
-$(NAME): LAST_ALL
-bonus: LAST_BONUS
+bonus: all
 
-LAST_ALL: $(OBJS)
-	rm -f LAST_BONUS
+$(NAME): $(OBJS)
 	make all -sC $(LIBFT_DIR)
 	$(CC) $(OBJS) $(MLX_FLAGS) $(LIBFT_FLAGS) -lm -o $(NAME)
-	touch $@
-
-LAST_BONUS: $(B_OBJS)
-	rm -f LAST_ALL
-	make all -sC $(LIBFT_DIR)
-	$(CC) $(B_OBJS) $(MLX_FLAGS) $(LIBFT_FLAGS) -lm -o $(NAME)
-	touch $@
 
 $(OBJS): $(INCLUDES)
 
@@ -104,11 +96,11 @@ $(OBJS): $(INCLUDES)
 
 clean:
 	make fclean -sC $(LIBFT_DIR)
-	rm -f $(OBJS) $(B_OBJS) LAST_ALL LAST_BONUS
+	rm -f $(OBJS)
 
 fclean:
 	make fclean -sC $(LIBFT_DIR)
-	rm -f $(NAME) $(OBJS) $(B_OBJS) LAST_ALL LAST_BONUS
+	rm -f $(NAME) $(OBJS)
 
 re: fclean all
 

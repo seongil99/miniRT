@@ -6,7 +6,7 @@
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 15:51:08 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/09 11:23:59 by seonyoon         ###   ########.fr       */
+/*   Updated: 2024/03/21 18:28:00 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ double	ft_atof(const char *s)
 	{
 		t /= 10.0;
 	}
+	if (ret < 0)
+		t *= -1;
 	split_clear(split);
 	return (ret + t);
 }

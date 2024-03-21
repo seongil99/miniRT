@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phong_lighting.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sihkang <sihkang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 20:41:54 by sihkang           #+#    #+#             */
-/*   Updated: 2024/03/21 16:17:00 by sihkang          ###   ########seoul.kr  */
+/*   Updated: 2024/03/21 18:19:50 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

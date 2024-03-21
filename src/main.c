@@ -3,21 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sihkang <sihkang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 16:26:10 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/11 13:26:51 by seonyoon         ###   ########.fr       */
+/*   Updated: 2024/03/20 18:26:31 by sihkang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
 int	minirt(t_vars *var, t_scene *scene, char *filename);
-
-void	check(void)
-{
-	system("leaks miniRT");
-}
 
 int	exit_hook(void)
 {
@@ -40,7 +35,6 @@ int	main(int argc, char *argv[])
 	t_vars	vars;
 	t_scene	scene;
 
-	// atexit(check);
 	if (argc != 2)
 		exit_err("Need 1 scene file .rt\n");
 	vars.image = &img;

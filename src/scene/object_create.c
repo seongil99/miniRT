@@ -6,7 +6,7 @@
 /*   By: sihkang <sihkang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 12:49:21 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/19 18:11:35 by sihkang          ###   ########seoul.kr  */
+/*   Updated: 2024/03/21 16:27:08 by sihkang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,13 @@ t_cylinder	*cylinder(t_point3 center, t_vec3 axis,
 	t_cylinder	*cy;
 
 	cy = (t_cylinder *)ft_calloc2(1, sizeof(t_cylinder));
-	cy->center_down = center;
-	cy->center_top = vplus(center, vmult(axis, height));
-	cy->axis_down = vmult(axis, -1);
-	cy->axis_top = axis;
 	cy->height = height;
-	cy->radius = radius / 2;
-	cy->radius2 = cy->radius * cy->radius;
+	cy->axis_top = axis;
+	cy->axis_down = vmult(axis, -1);
+	cy->center_top = vplus(center, vmult(axis, height / 2));
+	cy->center_down = vminus(center, vmult(axis, height / 2));
+	cy->r = radius / 2;
+	cy->r2 = cy->r * cy->r;
 	return (cy);
 }
 

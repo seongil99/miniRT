@@ -6,7 +6,7 @@
 /*   By: sihkang <sihkang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:32:35 by sihkang           #+#    #+#             */
-/*   Updated: 2024/03/19 20:00:39 by sihkang          ###   ########seoul.kr  */
+/*   Updated: 2024/03/20 13:42:03 by sihkang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,13 @@ double	cylinder_dst(t_cylinder *cy, t_ray *ray, t_hit_record *rec)
 	double		half_b;
 	double		c;
 	double		ret;
-	
+
 	oc = vminus(ray->orig, cy->center_down);
 	a = 1 - pow(vdot(ray->dir, cy->axis_top), 2);
-	half_b = vdot(vminus(ray->dir, vmult(cy->axis_top, vdot(ray->dir, cy->axis_top))), vminus(oc, vmult(cy->axis_top, vdot(oc, cy->axis_top))));
-	c = vlength2(oc) - pow(vdot(cy->axis_top, oc), 2) - cy->radius2;
+	half_b = vdot(vminus(ray->dir, \
+			vmult(cy->axis_top, vdot(ray->dir, cy->axis_top))), \
+			vminus(oc, vmult(cy->axis_top, vdot(oc, cy->axis_top))));
+	c = vlength2(oc) - pow(vdot(cy->axis_top, oc), 2) - cy->r2;
 	ret = get_root(a, half_b, c, rec);
 	if (ret == 0)
 		return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_sphere.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sihkang <sihkang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 16:54:24 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/21 12:36:06 by seonyoon         ###   ########.fr       */
+/*   Updated: 2024/03/21 16:25:36 by sihkang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,5 @@ void	parse_sphere(t_scene *scene, char **split, t_parse_data *data)
 	color = parse_color(split[3]);
 	if (diameter < 0.0)
 		exit_err(ERR_WRONG_VALUE);
-	oadd(&scene->world, object(SP, sphere(crd, diameter), color));
+	oadd(&scene->world, object(SP, sphere(crd, diameter / 2), color));
 }

@@ -6,11 +6,13 @@
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 16:26:10 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/02/25 12:32:52 by seonyoon         ###   ########.fr       */
+/*   Updated: 2024/03/21 18:19:15 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+int	minirt(t_vars *var, t_scene *scene, char *filename);
 
 int	exit_hook(void)
 {
@@ -27,38 +29,24 @@ int	key_hook(int keycode, t_vars *vars)
 	return (0);
 }
 
-static void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
-{
-	char	*dst;
-	int		t;
-
-	if (x < 0 || y < 0 || x >= WIN_WIDTH || y >= WIN_HEIGHT)
-		return ;
-	t = (y * data->line_length + x * (data->bits_per_pixel / 8));
-	if (t < 0)
-		return ;
-	dst = data->addr + t;
-	*(unsigned int *)dst = color;
-}
-
 int	main(int argc, char *argv[])
 {
 	t_img	img;
 	t_vars	vars;
+	t_scene	scene;
 
-	(void)argc;
-	(void)argv;
+	if (argc != 2)
+		exit_err("Need 1 scene file .rt\n");
 	vars.image = &img;
 	vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, WIN_WIDTH, WIN_HEIGHT, "miniRT");
 	img.img = mlx_new_image(vars.mlx, WIN_WIDTH, WIN_HEIGHT);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 			&img.endian);
-	for (int i = 0; i < WIN_WIDTH / 2; i++)
-		for (int j = 0; j < WIN_HEIGHT / 2; j++)
-			my_mlx_pixel_put(&img, WIN_WIDTH / 4 + i, WIN_HEIGHT / 4 + j, 0x7799FF);
+	minirt(&vars, &scene, argv[1]);
 	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
 	mlx_key_hook(vars.win, key_hook, &vars);
 	mlx_hook(vars.win, 17, 0, exit_hook, 0);
 	mlx_loop(vars.mlx);
+	exit(0);
 }

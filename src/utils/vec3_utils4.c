@@ -1,47 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec3_operation.c                                   :+:      :+:    :+:   */
+/*   vec3_utils4.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/02 14:24:20 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/02 15:51:21 by seonyoon         ###   ########.fr       */
+/*   Created: 2024/03/11 16:10:56 by seonyoon          #+#    #+#             */
+/*   Updated: 2024/03/11 16:11:12 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-t_vec3	*vec3_add(t_vec3 *a, t_vec3 *b)
+// 단위 벡터
+t_vec3	vunit(t_vec3 vec)
 {
-	a->x += b->x;
-	a->y += b->y;
-	a->z += b->z;
-	return (a);
+	double	len;
+
+	len = vlength(vec);
+	if (len == 0)
+	{
+		exit_err("Divider is 0\n");
+	}
+	vec.x /= len;
+	vec.y /= len;
+	vec.z /= len;
+	return (vec);
 }
 
-t_vec3	*vec3_sub(t_vec3 *a, t_vec3 *b)
+// 두 벡터의 원소를 비교하여 작은 값들만 반환
+t_vec3	vmin(t_vec3 vec1, t_vec3 vec2)
 {
-	a->x -= b->x;
-	a->y -= b->y;
-	a->z -= b->z;
-	return (a);
-}
-
-t_vec3	*vec3_mul(t_vec3 *a, int n)
-{
-	a->x *= n;
-	a->y *= n;
-	a->z *= n;
-	return (a);
-}
-
-double	vec3_dot(t_vec3 *a, t_vec3 *b)
-{
-	double	ret;
-
-	ret = a->x * b->x
-		+ a->y * b->y
-		+ a->z * b->z;
-	return (ret);
+	if (vec1.x > vec2.x)
+		vec1.x = vec2.x;
+	if (vec1.y > vec2.y)
+		vec1.y = vec2.y;
+	if (vec1.z > vec2.z)
+		vec1.z = vec2.z;
+	return (vec1);
 }

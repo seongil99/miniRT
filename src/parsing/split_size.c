@@ -1,46 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   split_size.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 16:05:35 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/08 14:28:23 by seonyoon         ###   ########.fr       */
+/*   Created: 2024/03/08 15:11:32 by seonyoon          #+#    #+#             */
+/*   Updated: 2024/03/09 12:37:18 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "parsing.h"
+#include <stdlib.h>
 
-int	ft_isspace(char c)
+void	split_clear(char **sp)
 {
-	return (
-		c == '\t'
-		|| c == '\n'
-		|| c == '\v'
-		|| c == '\f'
-		|| c == '\r'
-		|| c == ' '
-	);
+	char	**l;
+
+	l = sp;
+	if (!l)
+		return ;
+	while (*l)
+	{
+		free(*l);
+		++l;
+	}
+	free(sp);
 }
 
-int	ft_atoi(const char *str)
+int	split_size(char **split)
 {
 	int	ret;
-	int	sign;
 
+	if (!split)
+		return (0);
 	ret = 0;
-	sign = 1;
-	while (ft_isspace(*str))
-		str++;
-	if (*str == '-')
-		sign = -1;
-	if (*str == '+' || *str == '-')
-		str++;
-	while (ft_isdigit(*str))
+	while (*split)
 	{
-		ret = ret * 10 + (*str - '0');
-		str++;
+		++ret;
+		++split;
 	}
-	return (sign * ret);
+	return (ret);
 }

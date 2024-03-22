@@ -1,46 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_calloc2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 16:05:35 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/08 14:28:23 by seonyoon         ###   ########.fr       */
+/*   Created: 2024/03/02 14:06:37 by seonyoon          #+#    #+#             */
+/*   Updated: 2024/03/22 12:33:27 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "utils.h"
 
-int	ft_isspace(char c)
+void	*ft_calloc2(size_t cnt, size_t size)
 {
-	return (
-		c == '\t'
-		|| c == '\n'
-		|| c == '\v'
-		|| c == '\f'
-		|| c == '\r'
-		|| c == ' '
-	);
-}
+	void	*ret;
 
-int	ft_atoi(const char *str)
-{
-	int	ret;
-	int	sign;
-
-	ret = 0;
-	sign = 1;
-	while (ft_isspace(*str))
-		str++;
-	if (*str == '-')
-		sign = -1;
-	if (*str == '+' || *str == '-')
-		str++;
-	while (ft_isdigit(*str))
+	ret = ft_calloc(cnt, size);
+	if (!ret)
 	{
-		ret = ret * 10 + (*str - '0');
-		str++;
+		exit_err("Memory Error\n");
 	}
-	return (sign * ret);
+	return (ret);
 }

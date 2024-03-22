@@ -1,46 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   is_double.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 16:05:35 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/08 14:28:23 by seonyoon         ###   ########.fr       */
+/*   Created: 2024/03/08 15:16:38 by seonyoon          #+#    #+#             */
+/*   Updated: 2024/03/08 15:48:47 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "parsing.h"
 #include "libft.h"
 
-int	ft_isspace(char c)
+int	is_double(const char *s)
 {
-	return (
-		c == '\t'
-		|| c == '\n'
-		|| c == '\v'
-		|| c == '\f'
-		|| c == '\r'
-		|| c == ' '
-	);
-}
+	int	flag;
 
-int	ft_atoi(const char *str)
-{
-	int	ret;
-	int	sign;
-
-	ret = 0;
-	sign = 1;
-	while (ft_isspace(*str))
-		str++;
-	if (*str == '-')
-		sign = -1;
-	if (*str == '+' || *str == '-')
-		str++;
-	while (ft_isdigit(*str))
+	flag = 0;
+	if (!s || !*s)
+		return (0);
+	if (!(ft_isdigit(*s) || *s == '-' || *s == '+'))
+		return (0);
+	++s;
+	while (*s)
 	{
-		ret = ret * 10 + (*str - '0');
-		str++;
+		if (!(ft_isdigit(*s) || *s == '.'))
+			return (0);
+		if (!flag && *s == '.')
+			flag = 1;
+		else if (flag && *s == '.')
+			return (0);
+		++s;
 	}
-	return (sign * ret);
+	if (!ft_isdigit(*--s))
+		return (0);
+	return (1);
 }

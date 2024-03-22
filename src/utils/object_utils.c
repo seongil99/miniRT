@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   object_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/25 11:38:00 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/02 18:28:23 by seonyoon         ###   ########.fr       */
+/*   Created: 2024/03/08 14:00:23 by seonyoon          #+#    #+#             */
+/*   Updated: 2024/03/08 14:00:24 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include "utils.h"
 
-# include <fcntl.h>
-# include <math.h>
-# include <mlx.h>
-# include <stdlib.h>
-# include "utils/utils.h"
+void	oadd(t_object **list, t_object *new)
+{
+	t_object	*cur;
 
-# define WIN_WIDTH 1920
-# define WIN_HEIGHT 1080
-# define MAX_DEPTH 3
+	if (*list == NULL)
+	{
+		*list = new;
+		return ;
+	}
+	cur = *list;
+	while (cur->next)
+		cur = cur->next;
+	cur->next = new;
+}
 
-#endif
+t_object	*olast(t_object *list)
+{
+	if (list == NULL)
+		return (NULL);
+	while (list->next)
+		list = list->next;
+	return (list);
+}

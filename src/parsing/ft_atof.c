@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec3_utils.c                                       :+:      :+:    :+:   */
+/*   ft_atof.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/02 15:44:46 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/02 15:50:03 by seonyoon         ###   ########.fr       */
+/*   Created: 2024/03/08 15:51:08 by seonyoon          #+#    #+#             */
+/*   Updated: 2024/03/21 18:28:00 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "parsing.h"
 #include "utils.h"
-#include <math.h>
 
-double	vec3_len_sq(t_vec3 *a)
+double	ft_atof(const char *s)
 {
 	double	ret;
+	double	t;
+	char	**split;
 
-	ret = a->x * a->x
-		+ a->y * a->y
-		+ a->z * a->z;
-	return (ret);
-}
-
-double	vec3_len(t_vec3 *a)
-{
-	return (sqrt(vec3_len_sq(a)));
+	if (!s || !*s)
+		return (0);
+	if (!is_double(s))
+		exit_err(ERR_WRONG_VALUE);
+	split = ft_split2(s, is_dot);
+	ret = ft_atoi2(split[0]);
+	t = ft_atoi2(split[1]);
+	while (t >= 1.0)
+	{
+		t /= 10.0;
+	}
+	if (ret < 0)
+		t *= -1;
+	split_clear(split);
+	return (ret + t);
 }

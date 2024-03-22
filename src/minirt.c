@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sihkang <sihkang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 16:38:20 by sihkang           #+#    #+#             */
-/*   Updated: 2024/03/21 21:12:52 by sihkang          ###   ########seoul.kr  */
+/*   Updated: 2024/03/22 12:33:33 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "structures.h"
 #include "utils.h"
 #include "print.h"

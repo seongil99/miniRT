@@ -6,11 +6,10 @@
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 14:06:37 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/08 16:03:12 by seonyoon         ###   ########.fr       */
+/*   Updated: 2024/03/22 12:33:27 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "libft.h"
 #include "utils.h"
 

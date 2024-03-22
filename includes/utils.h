@@ -6,7 +6,7 @@
 /*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:24:17 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/08 16:02:51 by seonyoon         ###   ########.fr       */
+/*   Updated: 2024/03/22 12:33:38 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <math.h>
 # include <stdlib.h>
-# include <stdio.h>
 # include "structures.h"
 
 t_vec3		vec3(double x, double y, double z);

@@ -3,25 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sihkang <sihkang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:03:32 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/22 11:21:25 by sihkang          ###   ########seoul.kr  */
+/*   Updated: 2024/03/22 12:31:51 by seonyoon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "print.h"
 #include "structures.h"
-
-// [0,1] 로 되어있는 rgb 값을 각각 [0,255]에 맵핑 해서 출력.
-void	write_color(t_color3 pixel_color)
-{
-	printf("%d %d %d\n",
-		(int)(255.999 * pixel_color.x),
-		(int)(255.999 * pixel_color.y),
-		(int)(255.999 * pixel_color.z)
-		);
-}
 
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 {

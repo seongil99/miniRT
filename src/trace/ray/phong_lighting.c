@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phong_lighting.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seonyoon <seonyoon@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: sihkang <sihkang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 20:41:54 by sihkang           #+#    #+#             */
-/*   Updated: 2024/03/21 18:19:50 by seonyoon         ###   ########.fr       */
+/*   Updated: 2024/03/21 21:31:49 by sihkang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,12 @@ t_color3	point_light_get(t_scene *scene, t_light *light)
 	if (in_shadow(scene->world, src.light_ray, src.light_len))
 		return (color3(0, 0, 0));
 	src.light_dir = vunit(src.light_dir);
-	src.kd = fmax(vdot(scene->rec.normal, src.light_dir), 0.0);
+	src.kd = fmax(vdot(scene->rec.normal, src.light_dir) / 2, 0.0);
 	src.diffuse = vmult(light->light_color, src.kd);
 	src.view_dir = vunit(vmult(scene->ray.dir, -1));
 	src.reflect_dir = reflect(vmult(src.light_dir, -1), scene->rec.normal);
-	src.ksn = 70;
-	src.ks = 0.4;
-	src.spec = pow(fmax(vdot(src.view_dir, src.reflect_dir), 0.0), src.ksn);
-	src.specular = vmult(vmult(light->light_color, src.ks), src.spec);
+	src.spec = pow(fmax(vdot(src.view_dir, src.reflect_dir), 0.0), KSN);
+	src.specular = vmult(vmult(light->light_color, KS), src.spec);
 	src.brightness = light->bright_ratio * LUMEN;
 	return (vmult(vplus(vplus(scene->ambient, src.diffuse), \
 			src.specular), src.brightness));

@@ -6,7 +6,7 @@
 /*   By: sihkang <sihkang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:24:00 by seonyoon          #+#    #+#             */
-/*   Updated: 2024/03/20 18:30:13 by sihkang          ###   ########seoul.kr  */
+/*   Updated: 2024/03/21 21:25:21 by sihkang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 # include "structures.h"
 # include "utils.h"
+
+// decide specular lighting effect coefficients
+# define KSN 42
+# define KS 0.42
 
 // trace/ray/
 typedef struct s_light_info
@@ -27,8 +31,6 @@ typedef struct s_light_info
 	double		light_len;
 	t_ray		light_ray;
 	double		spec;
-	double		ksn;
-	double		ks;
 	double		kd;
 	double		brightness;
 }				t_light_info;

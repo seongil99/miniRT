@@ -1,6 +1,9 @@
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror
-MLX_FLAGS	= -Lmlx -lmlx -framework OpenGL -framework Appkit
+
+MLX_DIR		= ./minilibx_mms_apple+intel_community
+MLX_NAME	= libmlx.a
+MLX_FLAGS	= -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 
 LIBFT_FLAGS	= -Llibft -lft
 LIBFT_DIR	= ./libft
@@ -83,25 +86,33 @@ INCLUDE_SRC	= minirt.h \
 			utils.h
 INCLUDES = $(addprefix $(INCLUDE_DIR)/,$(INCLUDE_SRC))
 
-all: $(NAME)
+all: $(MLX_NAME) $(NAME)
 bonus: all
 
+$(MLX_NAME):
+	@echo "Compiling MiniLibX..."
+	@make -sC $(MLX_DIR)
+	@echo "MiniLibX compiled!"
+
 $(NAME): $(OBJS)
-	make all -sC $(LIBFT_DIR)
+	@make all -sC $(LIBFT_DIR)
 	$(CC) $(OBJS) $(MLX_FLAGS) $(LIBFT_FLAGS) -lm -o $(NAME)
+	ln -fs $(MLX_DIR)/libmlx.dylib ./libmlx.dylib
 
 $(OBJS): $(INCLUDES)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -Imlx -I$(LIBFT_DIR) -I$(INCLUDE_DIR) -c $< -o $@
+	$(CC) $(CFLAGS) -I$(MLX_DIR) -I$(LIBFT_DIR) -I$(INCLUDE_DIR) -c $< -o $@
 
 clean:
-	make fclean -sC $(LIBFT_DIR)
+	@make clean -sC $(MLX_DIR)
+	@make fclean -sC $(LIBFT_DIR)
 	rm -f $(OBJS)
 
-fclean:
-	make fclean -sC $(LIBFT_DIR)
-	rm -f $(NAME) $(OBJS)
+fclean: clean
+	@make clean -sC $(MLX_DIR)
+	@make fclean -sC $(LIBFT_DIR)
+	rm -f $(NAME)
 
 re: fclean all
 

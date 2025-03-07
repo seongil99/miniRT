@@ -41,8 +41,8 @@ typedef int					t_object_type;
 # define EPSILON 1e-6 // 0.000001
 # define LUMEN 3  // 이 값을 조절하여 장면의 밝기를 조절할 수 있다.
 
-# define WIN_WIDTH 1920
-# define WIN_HEIGHT 1080
+# define WIN_WIDTH 1000
+# define WIN_HEIGHT 800
 
 typedef struct s_img {
 	void	*img;

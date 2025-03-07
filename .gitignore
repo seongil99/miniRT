@@ -4,4 +4,5 @@
 LAST_ALL
 LAST_BONUS
 miniRT
-.DS*
+.DS_Store
+libmlx.dylib
